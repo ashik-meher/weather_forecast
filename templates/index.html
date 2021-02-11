@@ -1,0 +1,292 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<title>Inventory</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .w3-sidebar a {
+    font-family: "Roboto", sans-serif
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .w3-wide {
+    font-family: "Montserrat", sans-serif;
+  }
+</style>
+
+<body class="w3-content" style="max-width:1200px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+    <div class="w3-container w3-display-container w3-padding-16">
+      <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+      <h3 class="w3-wide"><b>Project Manager</b></h3>
+    </div>
+    <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+      <a href="add_entry" class="w3-bar-item w3-button">Add Entry</a>
+      <a href="#" class="w3-bar-item w3-button">Tasks</a>
+      <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+        Work Flow <i class="fa fa-caret-down"></i>
+      </a>
+      <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <a href="#" class="w3-bar-item w3-button w3-light-grey"><i
+            class="fa fa-caret-right w3-margin-right"></i>Projects</a>
+        <a href="#" class="w3-bar-item w3-button">Process</a>
+        <a href="#" class="w3-bar-item w3-button">Suppliers</a>
+        <a href="#" class="w3-bar-item w3-button">Exterior</a>
+      </div>
+      <a href="#" class="w3-bar-item w3-button">Interior</a>
+      <a href="#" class="w3-bar-item w3-button">Priority Queue</a>
+      <a href="#" class="w3-bar-item w3-button">Performance</a>
+      <a href="#" class="w3-bar-item w3-button">Contracts</a>
+    </div>
+    <a href="#footer" class="w3-bar-item w3-button w3-padding">KPI</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding"
+      onclick="document.getElementById('newsletter').style.display='block'">OKR
+      <a href="#footer" class="w3-bar-item w3-button w3-padding">Advanced Analytics</a>
+  </nav>
+
+  <!-- Top menu on small screens -->
+  <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+    <div class="w3-bar-item w3-padding-24 w3-wide">Rebot IT</div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i
+        class="fa fa-bars"></i></a>
+
+
+
+  </header>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+    id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:83px"></div>
+
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+      <p class="w3-center" style="margin: 30px 0px;">Inventory Materials Received </p>
+      <p class="w3-center" style="margin: 30px 0px;"> সমস্ত মালামাল এর বিবরন </p>
+      <p class="w3-center">
+        <i class="fa fa-shopping-cart w3-margin-right"></i>
+        <i class="fa fa-calculator w3-margin-righ" aria-hidden="true"></i>
+        <i class="fa fa-university w3-margin-righ" aria-hidden="true"></i>
+        <i class="fa fa-calendar-check-o w3-margin-righ" aria-hidden="true"></i>
+        <i class="fa fa-database w3-margin-righ" aria-hidden="true"></i>
+
+        <i class="fa fa-search w3-margin-righ"></i>
+      </p>
+
+
+    </header>
+
+    <!-- Image header -->
+    <div class="w3-display-container w3-container">
+      <img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/open_box4-512.png"
+        alt="Received Materials" style="width:10% ;margin:5px">
+      <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
+        <h1 class="w3-jumbo w3-hide-small">New arrivals</h1>
+
+        <h1 class="w3-hide-small">Collection 2000</h1>
+
+      </div>
+    </div>
+
+    <div class="w3-container w3-text-grey" id="jeans">
+      <p> </p>
+    </div>
+
+    <!-- Product grid -->
+
+
+    <!---
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top"
+        src="data:image/jpeg;base64,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"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Product: {{entry.productName}}</h5>
+        <p class="card-text">Description</p>
+        <p>Date: {{entry.createdDate}}</p>
+        <p>Quantity: {{entry.quantity}}</p>
+        <p>Unit: {{entry.unit}}</p>
+        <p>Price: {{entry.price}}</p>
+        <p>Paid: {{entry.pricePaid}}</p>
+        <p>Supplier: {{entry.dealer}}</p>
+        <p>Acknowledged by: {{entry.receiver}}</p>
+        <p>Sum: {{summation}}</p>
+
+        <a href="#" class="btn btn-primary">See Full Information</a>
+      </div>
+    </div>
+    -->
+
+    <div style="margin: 80px 5px;">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Price</th>
+            <th scope="col">Paid</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Received by</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in entrs %}
+          <tr>
+            <th scope="row">{{entry.productName}}</th>
+            <td>{{entry.createdDate}}</td>
+            <td>{{entry.quantity}}</td>
+            <td>{{entry.unit}}</td>
+            <td>{{entry.price}}</td>
+            <td>{{entry.pricePaid}}</td>
+            <td>{{entry.dealer}}</td>
+            <td>{{entry.receiver}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <p style="text-align:right;">Total Credit(মালামাল বাবদ মোট দেনা): {{summation}}</p>
+
+      <p style="text-align:right;">Paid Account(পরিশোধিত
+        ): {{summationPaid}}</p>
+
+      <p style="text-align:right;">Payable Balance(দেনা/পাওনা): {{balance}}</p>
+
+
+
+
+    </div>
+
+
+
+    <!-- Subscribe section -->
+    <div class="w3-container w3-black w3-padding-32">
+      <h1>Get Notified</h1>
+      <p>To get update for Received Materials</p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+      <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+      <div class="w3-row-padding">
+        <div class="w3-col s4">
+          <h4>Contact</h4>
+          <p>Questions? Go ahead.</p>
+          <form action="/action_page.php" target="_blank">
+            <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
+            <button type="submit" class="w3-button w3-block w3-black">Send</button>
+          </form>
+        </div>
+
+        <div class="w3-col s4">
+          <h4>About</h4>
+          <p><a href="#">About us</a></p>
+          <p><a href="#">We're hiring</a></p>
+          <p><a href="#">Support</a></p>
+          <p><a href="#">Find store</a></p>
+          <p><a href="#">Shipment</a></p>
+          <p><a href="#">Payment</a></p>
+          <p><a href="#">Gift card</a></p>
+          <p><a href="#">Return</a></p>
+          <p><a href="#">Help</a></p>
+        </div>
+
+        <div class="w3-col s4 w3-justify">
+          <h4>Store</h4>
+          <p><i class="fa fa-fw fa-map-marker"></i> Rebot IT</p>
+          <p><i class="fa fa-fw fa-phone"></i> 01317242174</p>
+          <p><i class="fa fa-fw fa-envelope"></i> mobinashikmeher@gmail.com</p>
+          <h4>We accept</h4>
+          <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+          <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+          <br>
+          <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+          <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
+          <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
+          <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
+          <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+          <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+        </div>
+      </div>
+    </footer>
+
+    <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://dreamstockbd.com" title="W3.CSS"
+        target="_blank" class="w3-hover-opacity">Rebot IT</a></div>
+
+    <!-- End page content -->
+  </div>
+
+  <!-- Newsletter Modal -->
+  <div id="newsletter" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+      <div class="w3-container w3-white w3-center">
+        <i onclick="document.getElementById('newsletter').style.display='none'"
+          class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+        <h2 class="w3-wide">NEWSLETTER</h2>
+        <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+        <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom"
+          onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Accordion 
+    function myAccFunc() {
+      var x = document.getElementById("demoAcc");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    // Click on the "Jeans" link on page load to open the accordion for demo purposes
+    document.getElementById("myBtn").click();
+
+
+    // Open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
+
+{% endblock %}
