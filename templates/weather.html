@@ -7,15 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather Forecast Today</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <style>
+        .hero.is-primary {
+            background-color: #123b35e3;
+            color: #fff;
+        }
+
+        .call {
+            text-align: center;
+            font-size: larger;
+            font-weight: 800;
+        }
+    </style>
+
+    <script src="https://use.fontawesome.com/d970d86857.js"></script>
 </head>
 
 <body>
     <section class="hero is-primary">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">
-                    What's the weather like?
-                </h1>
+                <div class="columns">
+                    <h1 class="title">
+                        What's the weather today?
+                    </h1>
+
+
+                    <div class="column"> </div>
+                    <div class="column"></div>
+                    <div class="column">
+                        <p> Call us for holiday bookings </p>
+                        <p class="call"> <i class="fa fa-phone"></i> +880 1317 24 21 74</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -23,13 +47,16 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
+
                     <form method="POST">
+                        {% csrf_token %}
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input class="input" type="text" placeholder="City Name">
+                                <!--<input class="input" type="text" placeholder="City Name">-->
+                                {{form.name}}
                             </div>
                             <div class="control">
-                                <button class="button is-info">
+                                <button type="submit" class="button is-info">
                                     Add City
                                 </button>
                             </div>
@@ -69,6 +96,11 @@
         </div>
     </section>
     <footer class="footer">
+
+        <h3 style="text-align:center">&copy Rebot IT</h3>
+        <h3 style="text-align:center">Designed by Ashik Meher </h3>
+
+
     </footer>
 </body>
 
